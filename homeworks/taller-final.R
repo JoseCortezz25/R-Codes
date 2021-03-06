@@ -89,7 +89,7 @@ pac3[,9] <- as.numeric(as.character(pac3[,9]))
 class(pac3[,9])
 pac3
 str(pac3)
-pac4[,9] <- as.numeric(as.character(pac4[,9]))
+pac4[,9] <- as.numeric(as.character(pac3[,9]))
 
 #Colocarle nombres de columnas y filas al dataframe
 colnames( pac3 ) <- c("L-CORE", "L-SURF", "L-O2", "L-BP", "SURF-STBL", "CORE-STBL", "BP-STBL",  "ADM-DECS", "COMFORT")
@@ -102,32 +102,29 @@ while(i < count(pac4)){
   i <-  i + 1
   rownames(pac4)[i] <- paste("Paciente", i) 
 }
-
+pac5 <- pac4
 #GRAFICA 1
-colors <- c("green", "yellow")
-
-ggplot(pac3, aes( x = pac3$`L-O2` )) + 
+colors <- c("#2ecc71",  "#3498db")
+ggplot(pac5, aes( x = pac5$`L-O2` )) + 
   geom_bar(fill=colors) + 
-  labs(title="Pacientes con saturación de O2", x = "Niveles de saturación de O2", y = "Pacientes") +
+  labs(title="Pacientes Con saturación de O2", x = "Niveles de Saturación de O2", y = "Pacientes") +
   theme_dark()
 
 #GRAFICA 2
-colors <-  c("blue", "yellow", "green")
-ggplot(pac3, aes( x = pac3[,"ADM-DECS"] )) + 
-  geom_bar(fill=colors) + 
+colors2 <-  c("#e74c3c", "#2ecc71",  "#3498db")
+ggplot(pac5, aes( x = pac5[,"ADM-DECS"] )) + 
+  geom_bar(fill=colors2) + 
   labs(title="Estado de Pacientes Pendientes de Salida", x = "Estados", y = "Pacientes") +
   theme_dark()
 
 #GRAFICA 3
-colors <-  c("blue")
-ggplot(pac3, aes( x = pac3[,"COMFORT"]),  y = pac3[,"ADM-DECS"]) + 
-  geom_bar(fill=colors)
+data <- pac5 %>%   select(`ADM-DECS`, COMFORT) 
 
-colors <-  c("red")
-ggplot(pac3, aes( x = pac3[,"ADM-DECS"])) + 
-  geom_bar(fill=colors, aes(fill=COMFORT), position = "dodge") +
-  labs(title="Evaluación paciente segun la atención", x = "Calificación", y = "Pacientes") 
-  
+b <- ggplot(data, aes(x=data$COMFORT, fill=data$`ADM-DECS`)) + 
+  geom_bar(position = "fill") + scale_fill_manual(values=c("#e74c3c", "#2ecc71",  "#3498db")) +
+  labs(title="Evaluación paciente segun la atención", x = "Calificación", y = "Pacientes", fill="Estados Pacientes") 
+b
+
 
 library("ggplot2")
 
