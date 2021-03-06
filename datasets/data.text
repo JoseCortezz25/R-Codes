@@ -1,0 +1,31 @@
+7. Información de atributos:
+
+     1. L-CORE (temperatura interna del paciente en C):
+              alto (> 37), medio (> = 36 y <= 37), bajo (<36)
+
+     2. L-SURF (temperatura de la superficie del paciente en C):
+              alto (> 36.5), medio (> = 36.5 y <= 35), bajo (<35)
+
+     3. L-O2 (saturación de oxígeno en%):
+              excelente (> = 98), bueno (> = 90 y <98),
+              regular (> = 80 y <90), pobre (<80)
+
+     4. L-BP (última medición de la presión arterial):
+              alto (> 130/90), medio (<= 130/90 y> = 90/70), bajo (<90/70)
+
+     5. SURF-STBL (estabilidad de la temperatura de la superficie del paciente):
+              estable, mod estable, inestable
+
+     6. CORE-STBL (estabilidad de la temperatura central del paciente)
+              estable, mod estable, inestable
+
+     7. BP-STBL (estabilidad de la presión arterial del paciente)
+              estable, mod estable, inestable
+
+     8. COMODIDAD (comodidad percibida por el paciente en el momento del alta, medida como
+              un número entero entre 0 y 20)
+
+     9. decisión ADM-DECS (decisión de aprobación de la gestión):
+              I (paciente enviado a Unidad de Cuidados Intensivos),
+              S (paciente preparado para irse a casa),
+              A (paciente enviado al piso del hospital general)
